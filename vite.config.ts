@@ -5,6 +5,8 @@ import react from '@vitejs/plugin-react';
 export default defineConfig(({ mode }) => {
     const env = loadEnv(mode, '.', '');
     return {
+      // GitHub Pages 部署需要设置 base 路径为仓库名
+      base: '/Axiom-web/',
       server: {
         port: 3000,
         host: '0.0.0.0',
