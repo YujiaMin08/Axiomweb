@@ -57,13 +57,15 @@ const App: React.FC = () => {
       });
     });
 
-    // 5. Switch to actual page after animation finishes
+    // 5. 只播放动画，不切换到详情页面
     setTimeout(() => {
-      setActiveCourse(course);
-      window.scrollTo(0, 0);
+      // 动画结束后直接恢复状态，不设置 activeCourse
       document.body.style.overflow = ''; // Unlock scroll
       
-      // Clear transition overlay after a moment (to hide it behind the new page)
+      // 逆向播放动画：先收缩
+      setTransition(prev => ({ ...prev, isExpanded: false }));
+      
+      // 动画播放完后清除过渡状态
       setTimeout(() => {
          setTransition({
            isActive: false,
@@ -71,7 +73,7 @@ const App: React.FC = () => {
            course: null,
            isExpanded: false
          });
-      }, 100);
+      }, 700);
     }, 700); // 700ms matches CSS transition duration
   };
 
