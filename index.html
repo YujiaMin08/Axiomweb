@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Axiom</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Instrument Sans', 'sans-serif'],
+              serif: ['Cormorant Garamond', 'serif'],
+              display: ['Playfair Display', 'serif'],
+            },
+            colors: {
+              axiom: {
+                50: '#FFFEFC', // Brightest off-white
+                100: '#F7F5F0',
+                200: '#EBE8E0',
+                300: '#DCD6CC',
+                400: '#B0A294',
+                500: '#8F8073',
+                600: '#6E6056',
+                800: '#4A403A',
+                900: '#2B2522',
+              },
+              book: {
+                // Brighter, cleaner pastels
+                olive: '#E6EED6', // Fresh light green
+                clay: '#F5E6D8',  // Warm light apricot
+                mist: '#E1ECF4',  // Soft sky blue
+                rose: '#F5E3E3',  // Soft pink
+                sand: '#FFFCF7',  // Bright cream
+                slate: '#EBEDEF', // Clean light grey
+              },
+              shelf: {
+                 wood: '#DBCBB9', // Lighter wood
+                 shadow: '#B8A898',
+              },
+              accent: {
+                peach: '#FFE4D6',
+                orange: '#F09A75', 
+                blue: '#E6F4FA',
+              }
+            },
+            backgroundImage: {
+              'paper-grid': "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23B0A294' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")",
+              'noise': "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.4'/%3E%3C/svg%3E\")",
+            },
+            animation: {
+              'float': 'float 8s ease-in-out infinite',
+              'spin-slow': 'spin 60s linear infinite',
+              'reverse-spin-slow': 'spin 80s linear infinite reverse',
+              'slide-up-fade': 'slideUpFade 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+              'scale-reveal': 'scaleReveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+            },
+            keyframes: {
+              float: {
+                '0%, 100%': { transform: 'translateY(0)' },
+                '50%': { transform: 'translateY(-10px)' },
+              },
+              slideUpFade: {
+                '0%': { transform: 'translateY(40px)', opacity: '0' },
+                '100%': { transform: 'translateY(0)', opacity: '1' },
+              },
+              scaleReveal: {
+                '0%': { transform: 'scale(0.95)', opacity: '0' },
+                '100%': { transform: 'scale(1)', opacity: '1' },
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      body {
+        background-color: #FFFEFC;
+        color: #2B2522;
+      }
+      .no-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "react": "https://esm.sh/react@^19.2.4",
+    "lucide-react": "https://esm.sh/lucide-react@^0.563.0"
+  }
+}
+</script>
+</head>
+  <body class="bg-paper-grid relative">
+     <!-- Global Noise Overlay -->
+     <div class="fixed inset-0 bg-noise opacity-[0.03] pointer-events-none mix-blend-multiply z-50"></div>
+    <div id="root"></div>
+  </body>
+</html>
